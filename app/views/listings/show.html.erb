@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Spark:</strong>
+  <%= @listing.spark_id %>
+</p>
+
+<p>
+  <strong>Listing api url:</strong>
+  <%= @listing.listing_api_url %>
+</p>
+<p>
+	<strong>JSON Data</strong><br>
+	<code><%=@listing.list%></code>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing),class:'btn btn-primary' %> |
+<%= link_to 'Back', listings_path,class:'btn btn-primary' %>
