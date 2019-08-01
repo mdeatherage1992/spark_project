@@ -24,6 +24,25 @@ module Spark
 		response = http.request(request)
 		return JSON.parse(response.read_body)
 	end
+	def self.execute_post_request(api_name,json_params)
+	puts "API NAME: #{api_name}"
+	puts json_params
+	server_url = SERVER_URL
+	url = URI("#{server_url}#{api_name}")
+	#puts "url:#{url}"
+	http = Net::HTTP.new(url.host, url.port)
+		http.use_ssl = true
+	#http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+	request = Net::HTTP::Post.new(url)
+	request["content-type"] = 'application/json'
+	request["authorization"] = AUTH_TOKEN
+	request["x-sparkapi-user-agent"] = 'spark_api_app_test'
+	request["cache-control"] = 'no-cache'
+	request.body = json_params
+	sleep 3
+	response = http.request(request)
+	return JSON.parse(response.read_body)
+end
 
 	def self.get_listing(api_url)
 		json_data = execute_get_request(api_url)

@@ -1,0 +1,15 @@
+
+<h1>New Contacts</h1>
+
+<%= simple_form_for :contact,url:contacts_path do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :email %>
+  </div>
+
+  <div class="form-actions">
+
+	<%= link_to 'Back', contacts_path,class:'btn btn-primary' %>
+    <%= f.button :submit,'Create Contact',class:'btn btn-primary'  %>
+  </div>
+<% end %>
